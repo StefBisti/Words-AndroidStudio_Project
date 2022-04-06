@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="forest_green_noun1">#014421</color>
+    <color name="apple_green_noun2">#8DB600</color>
+    <color name="barn_red_verb1">#7C0A02</color>
+    <color name="scarlet_red_verb2">#FF2400</color>
+    <color name="golden_yellow_adj1">#DAA520</color>
+    <color name="lemon_yellow_adj2">#FDFF00</color>
+    <color name="air_force_blue_expr1">#00308F</color>
+    <color name="electric_blue_expr2">#7DF9FF</color>
+
+    <color name="selectedAddWordCriteriaItem">#8DFFFFFF</color>
+    <color name="unselectedAddWordCriteriaItem">#25FFFFFF</color>
+</resources>

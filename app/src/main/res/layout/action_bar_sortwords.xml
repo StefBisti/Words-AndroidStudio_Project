@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="17dp"
+    android:layout_gravity="center"
+    android:layout_weight="2">
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/sort_alpha_asc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/done_button"
+        android:backgroundTint="#25FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="5dp"
+        android:layout_marginVertical="2dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sort_alpha"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Alpha (asc.)"
+            android:textColor="#D8D8D8"
+            android:textSize="12.5dp"
+            android:textCursorDrawable="@null"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/sort_alpha_desc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/done_button"
+        android:backgroundTint="#25FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="5dp"
+        android:layout_marginVertical="2dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sort_alpha"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Alpha (desc.)"
+            android:textColor="#D8D8D8"
+            android:textSize="12.5dp"
+            android:textCursorDrawable="@null"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/sort_date_asc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/done_button"
+        android:backgroundTint="#25FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="5dp"
+        android:layout_marginVertical="2dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sort_date"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Date (asc.)"
+            android:textColor="#D8D8D8"
+            android:textSize="12.5dp"
+            android:textCursorDrawable="@null"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:animateLayoutChanges="true"
+        android:id="@+id/sort_date_desc"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/done_button"
+        android:backgroundTint="#25FFFFFF"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="5dp"
+        android:layout_marginVertical="2dp">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sort_date"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:maxLines="1"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="Date (desc.)"
+            android:textColor="#D8D8D8"
+            android:textSize="12.5dp"
+            android:textCursorDrawable="@null"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="12dp">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submitQuerrySort"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:text="SORT"
+            android:outlineProvider="none"
+            android:background="@drawable/done_button"
+            android:textSize="12.5dp"/>
+
+        <ImageButton
+            android:id="@+id/resetWordsSort"
+            android:background="@drawable/done_button"
+            android:backgroundTint="#B5636363"
+            android:layout_gravity="center"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/reset" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>

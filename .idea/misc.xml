@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.214" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/app_background.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/arrow_down.xml" value="0.3375" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/arrow_right.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/bottom_bar_bg.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/bottom_view.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_adj.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_button.xml" value="0.3375" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_button_secondary.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_expr.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_noun.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_other.xml" value="0.1795" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/circle_verb.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/done_button.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/edit.xml" value="0.3375" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/ic_launcher_background.xml" value="0.214" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/layout_bg.xml" value="0.3375" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/light.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/menu.xml" value="0.214" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/plus.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/remove.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/reset.xml" value="0.214" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/reset_button.xml" value="0.214" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/round_button.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/sort.xml" value="0.1795" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/sort_alpha.xml" value="0.1795" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/sort_date.xml" value="0.1795" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/squircle_button.xml" value="0.218" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/drawable/star.xml" value="0.1795" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/layout/action_bar_addword.xml" value="0.3140565639510342" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/layout/action_bar_searchword.xml" value="0.3180846515604959" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/layout/action_bar_sortwords.xml" value="0.3180846515604959" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/layout/activity_main.xml" value="0.31958762886597936" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/layout/word_details.xml" value="0.3065412569474134" />
+        <entry key="..\:/Coding/AndroidStudio/Words/app/src/main/res/layout/words_list_item.xml" value="0.290625" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.35" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/arrow.xml" value="0.308" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/circle_adj.xml" value="0.3295" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/circle_expr.xml" value="0.3295" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/circle_noun.xml" value="0.3295" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/circle_verb.xml" value="0.3295" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/edit.xml" value="0.3875" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/layout_bg.xml" value="0.249" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/drawable/line.xml" value="0.387" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/layout/activity_main.xml" value="0.3140565639510342" />
+        <entry key="..\:/Coding/AndroidStudio/app/src/main/res/layout/words_list_item.xml" value="0.25" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/../temp/AndroidStudio/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

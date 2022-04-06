@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="17dp"
+    android:layout_gravity="center"
+    android:layout_weight="2">
+
+
+        <EditText
+            android:id="@+id/foreignWord_addWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="French Word"
+            android:textColor="@color/white"
+            android:textColorHint="#BCBCBC"
+            android:textSize="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@null"
+            android:maxLines="1"
+            android:inputType="textNoSuggestions"
+            android:textCursorDrawable="@null"/>
+        <EditText
+            android:id="@+id/localWord_addWord"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="English Word"
+            android:textColor="@color/white"
+            android:textColorHint="#BCBCBC"
+            android:textSize="16dp"
+            android:background="@null"
+            android:maxLines="1"
+            android:inputType="textNoSuggestions"
+            android:textCursorDrawable="@null"/>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submitWord"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:layout_marginTop="27dp"
+            android:text="ADD"
+            android:outlineProvider="none"
+            android:background="@drawable/done_button"
+            android:textSize="12.5dp"/>
+
+</LinearLayout>

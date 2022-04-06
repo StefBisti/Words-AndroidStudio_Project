@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="theme">
+        <attr name="background_color" format="color"/>
+        <attr name="container_color" format="color"/>
+        <attr name="container_color_selected" format="color"/>
+        <attr name="text_color_primary" format="color"/>
+        <attr name="text_color_secondary1" format="color"/>
+        <attr name="text_color_secondary2" format="color"/>
+        <attr name="accent_color1" format="color"/>
+
+        <attr name="mode" format="reference"/>
+    </declare-styleable>
+</resources>

@@ -1,0 +1,23 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.HelloWorld" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:fontFamily">@font/fredoka_reg</item>
+        <item name="android:statusBarColor">#EAEAEA</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:overScrollMode">never</item>
+        <item name="android:ambientShadowAlpha">1</item>
+        <item name="android:spotShadowAlpha">1</item>
+        <item name="android:navigationBarColor">#232527</item>
+
+        <item name="background_color">#EAEAEA</item>
+        <item name="container_color">#F7F7F7</item>
+        <item name="container_color_selected">@color/white</item>
+        <item name="text_color_primary">#131313</item>
+        <item name="text_color_secondary1">#222222</item>
+        <item name="text_color_secondary2">#505050</item>
+        <item name="accent_color1">#6C6C6C</item>
+
+        <item name="mode">@drawable/dark_mode</item>
+    </style>
+
+</resources>

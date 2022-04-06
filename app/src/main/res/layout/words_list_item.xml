@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/layout_bg"
+    android:paddingVertical="14dp"
+    android:layout_marginBottom="7dp"
+    android:animateLayoutChanges="true"
+    android:backgroundTint="?attr/container_color"
+    android:id="@+id/itemBigContainer"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/container_list_item"
+        android:animateLayoutChanges="true">
+
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:layout_marginLeft="3dp"
+            android:fontFamily="@font/fredoka_light"
+            android:textSize="11sp"
+            android:textColor="?attr/text_color_primary"
+            android:gravity="center_horizontal|center_vertical"
+            android:text="19\nJAN"
+            android:lineHeight="14dp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="?attr/accent_color1" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="7"
+            android:layout_marginLeft="20dp">
+
+            <EditText
+                android:focusableInTouchMode="false"
+                android:id="@+id/foreignWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Voiture"
+                android:textColor="?attr/text_color_primary"
+                android:textSize="17dp"
+                android:textStyle="bold"
+                android:hint="French Word"
+                android:textColorHint="#6C6C6C"
+                android:background="@null"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:textCursorDrawable="@null"/>
+            <EditText
+                android:focusableInTouchMode="false"
+                android:id="@+id/localWord"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textSize="14dp"
+                android:text="Car"
+                android:textColor="?attr/text_color_primary"
+                android:hint="English Word"
+                android:textColorHint="#838383"
+                android:background="@null"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:textCursorDrawable="@null"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginHorizontal="15dp"
+            android:layout_weight="2">
+
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/circle_other"
+                android:layout_gravity="center"
+                android:id="@+id/typeImage"/>
+
+            <TextView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="Noun"
+                android:textSize="13dp"
+                android:textColor="?attr/text_color_primary"
+                android:layout_marginLeft="4dp"
+                android:id="@+id/typeText"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/detailsHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/details"
+            android:orientation="vertical"
+            android:layout_marginRight="50dp">
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:layout_gravity="right"
+            android:gravity="center"
+            android:layout_marginTop="10dp">
+
+            <ImageButton
+                android:id="@+id/edit_word"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/squircle_button"
+                android:backgroundTint="?attr/container_color_selected"
+                android:src="@drawable/edit" />
+            <ImageButton
+                android:id="@+id/add_detail"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/add_detail"
+                android:backgroundTint="?attr/container_color_selected"
+                android:background="@drawable/squircle_button"/>
+            <ImageButton
+                android:id="@+id/deleteWord"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginHorizontal="10dp"
+                android:src="@drawable/remove"
+                android:backgroundTint="?attr/container_color_selected"
+                android:background="@drawable/squircle_button"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</LinearLayout>

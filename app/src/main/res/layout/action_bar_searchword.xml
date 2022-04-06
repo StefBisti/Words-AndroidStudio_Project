@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginLeft="30dp"
+    android:layout_marginRight="17dp"
+    android:layout_gravity="center"
+    android:layout_weight="2">
+
+    <EditText
+        android:id="@+id/keyWord_search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Keyword"
+        android:textColor="@color/white"
+        android:textColorHint="#BCBCBC"
+        android:textSize="23dp"
+        android:layout_marginBottom="10dp"
+        android:background="@null"
+        android:maxLines="1"
+        android:inputType="textNoSuggestions"
+        android:textCursorDrawable="@null"/>
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="27dp"
+        android:orientation="horizontal">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/submitQuerrySearch"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:textColor="@color/white"
+            android:text="SEARCH"
+            android:outlineProvider="none"
+            android:background="@drawable/done_button"
+            android:textSize="12.5dp"
+            android:layout_gravity="center"/>
+
+        <ImageButton
+            android:id="@+id/resetWordsSearch"
+            android:background="@drawable/done_button"
+            android:backgroundTint="#B5636363"
+            android:layout_gravity="center"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginLeft="30dp"
+            android:src="@drawable/reset" />
+
+    </LinearLayout>
+
+
+
+
+</LinearLayout>
