@@ -1,20 +1,30 @@
 package com.stefan.helloworld;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.color.MaterialColors;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapter.ViewHolder> {
@@ -27,18 +37,19 @@ public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapt
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private final TextView date, typeText;
-        private final EditText foreignWord, localWord;
+        private TextView date;
+        private EditText foreignWord, localWord, typeText;
 
-        private final ImageView typeImage;
-        private final LinearLayout container;
-        private final View itemView;
-        private final OnWordListener onWordListener;
+        private ImageView typeImage;
+        private LinearLayout container;
+        private View itemView;
+        private OnWordListener onWordListener;
         private boolean expanded = false;
 
         public ViewHolder(@NonNull View itemView, OnWordListener onWordListener){
             super(itemView);
             this.itemView = itemView;
+
             container = itemView.findViewById(R.id.details);
             date = itemView.findViewById(R.id.date);
             foreignWord = itemView.findViewById(R.id.foreignWord);
@@ -48,12 +59,14 @@ public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapt
             this.onWordListener = onWordListener;
 
             itemView.setOnClickListener(this);
-            itemView.findViewById(R.id.deleteWord).setOnClickListener(this);
+
 
             foreignWord.setOnClickListener(this);
             localWord.setOnClickListener(this);
+            typeText.setOnClickListener(this);
             itemView.findViewById(R.id.edit_word).setOnClickListener(this);
             itemView.findViewById(R.id.add_detail).setOnClickListener(this);
+            itemView.findViewById(R.id.deleteWord).setOnClickListener(this);
         }
 
         @Override
@@ -70,7 +83,7 @@ public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapt
                     break;
                 case R.id.localWord:
                 case R.id.foreignWord:
-                    Log.d("Main", "ok");
+                case R.id.typeText:
                     if(onWordListener.onEditTextsClick(itemView, !expanded)){
                         expanded = !expanded;
                         if(!expanded)
@@ -78,7 +91,7 @@ public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapt
                     }
                     break;
                 case R.id.edit_word:
-                    onWordListener.onChangeWord(getAdapterPosition(), foreignWord, localWord, itemView);
+                    onWordListener.onChangeWord(getAdapterPosition(), foreignWord, localWord, typeText, itemView);
                     break;
                 case R.id.add_detail:
                     onWordListener.onAddDetail(itemView, getAdapterPosition());
@@ -86,84 +99,104 @@ public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapt
                 default:
                     break;
             }
-
         }
     }
 
     private ArrayList<Word> words = new ArrayList<>();
     public void setWords(ArrayList<Word> words){
         this.words = words;
-        for(Word word : words){
-            Log.d("adapter", "words " + word.getDetails());
-        }
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.words_list_item, parent, false);
-        return new ViewHolder(view, mOnWordListener);
+
+        // Eerily way of doing it
+        // Variable 'view' is accessed from within inner class, needs to be final or effectively final error
+        // Implemented Android Studio solving
+
+        final View[] view = new View[1];
+
+        ((AppCompatActivity)ApplicationManager.getContext()).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                view[0] = LayoutInflater.from(parent.getContext()).inflate(R.layout.words_list_item, parent, false);
+            }
+        });
+
+        return new ViewHolder(view[0], mOnWordListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.date.setText(words.get(position).getDate());
-        holder.foreignWord.setText(words.get(position).getForeignWord());
-        holder.localWord.setText(words.get(position).getLocalWord());
+        String date = words.get(position).getDate();
+        String foreignWord = words.get(position).getForeignWord();
+        String localWord = words.get(position).getLocalWord();
+        char type = words.get(position).getType();
+        LinkedHashMap<String, String> details = words.get(position).getDetails();
 
-        switch(words.get(position).getType()){
-            case 'N':
-                holder.typeText.setText("Noun");
-                holder.typeImage.setImageResource(R.drawable.circle_noun);
-                break;
-            case 'V':
-                holder.typeText.setText("Verb");
-                holder.typeImage.setImageResource(R.drawable.circle_verb);
-                break;
-            case 'A':
-                holder.typeText.setText("Adj.");
-                holder.typeImage.setImageResource(R.drawable.circle_adj);
-                break;
-            case 'E':
-                holder.typeText.setText("Expr.");
-                holder.typeImage.setImageResource(R.drawable.circle_expr);
-                break;
-            case 'O':
-                holder.typeText.setText("Other");
-                holder.typeImage.setImageResource(R.drawable.circle_other);
-                break;
-            default:
-                break;
-        }
+        ((AppCompatActivity)ApplicationManager.getContext()).runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                int color = MaterialColors.getColor(ApplicationManager.getContext(), R.attr.container_color, Color.WHITE);
+                holder.itemView.setBackgroundTintList(ColorStateList.valueOf(color));
+                holder.itemView.findViewById(R.id.detailsHolder).setVisibility(View.GONE);
+                holder.expanded = false;
+                holder.itemView.findViewById(R.id.edit_word).setBackgroundTintList(ColorStateList.valueOf(ApplicationManager.getContext().getResources().getColor(R.color.transparent, null)));
+                holder.itemView.findViewById(R.id.add_detail).setBackgroundTintList(ColorStateList.valueOf(ApplicationManager.getContext().getResources().getColor(R.color.transparent, null)));
+                holder.itemView.findViewById(R.id.deleteWord).setBackgroundTintList(ColorStateList.valueOf(ApplicationManager.getContext().getResources().getColor(R.color.transparent, null)));
 
-        HashMap<String, String> details = words.get(position).getDetails();
+                holder.date.setText(date);
+                holder.foreignWord.setText(foreignWord);
+                holder.localWord.setText(localWord);
 
-
-        Log.d("Words adapter1", "list: " + details);
-
-        holder.container.removeAllViewsInLayout();
-        if(details != null){
-            List<String> detailsReversed = new ArrayList<>(details.keySet());
-            //Collections.reverse(detailsReversed);
-            for(String category : detailsReversed){
-                //Log.d("Words adapter2", "list: " + detailsReversed + "cnt: " + holder.container.getChildCount() + " pos: " + position + " holder: " + holder.foreignWord.getText().toString());
-                TextView detailName, detailContent;
-
-                View detailUI = LayoutInflater.from(holder.container.getContext()).inflate(R.layout.word_details, holder.container, false);
-
-
-                detailName = detailUI.findViewById(R.id.detail_name);
-                detailContent = detailUI.findViewById(R.id.detail_content);
-                detailName.setText(category);
-                Log.d("main", "category " + category);
-                detailContent.setText(details.get(category));
-
-                holder.container.addView(detailUI);
+                switch(type){
+                    case 'N':
+                        holder.typeText.setText("Noun");
+                        holder.typeImage.setImageResource(R.drawable.circle_noun);
+                        break;
+                    case 'V':
+                        holder.typeText.setText("Verb");
+                        holder.typeImage.setImageResource(R.drawable.circle_verb);
+                        break;
+                    case 'A':
+                        holder.typeText.setText("Adj.");
+                        holder.typeImage.setImageResource(R.drawable.circle_adj);
+                        break;
+                    case 'E':
+                        holder.typeText.setText("Expr.");
+                        holder.typeImage.setImageResource(R.drawable.circle_expr);
+                        break;
+                    case 'O':
+                        holder.typeText.setText("Other");
+                        holder.typeImage.setImageResource(R.drawable.circle_other);
+                        break;
+                    default:
+                        break;
+                }
+                for(int i=0; i<holder.container.getChildCount(); i++){
+                    View v = holder.container.getChildAt(i);
+                    if(v.getVisibility() == View.GONE) break;
+                    v.setVisibility(View.GONE);
+                    ((TextView)v.findViewById(R.id.detail_name)).setText("");
+                    ((TextView)v.findViewById(R.id.detail_content)).setText("");
+                }
+                if(details != null && details.size() > 0){
+                    int cnt = 0;
+                    for(String category : details.keySet()){
+                        TextView detailName, detailContent;
+                        holder.container.getChildAt(cnt).setVisibility(View.VISIBLE);
+                        detailName = holder.container.getChildAt(cnt).findViewById(R.id.detail_name);
+                        detailContent = holder.container.getChildAt(cnt).findViewById(R.id.detail_content);
+                        detailName.setText(category);
+                        detailContent.setText(details.get(category));
+                        cnt++;
+                    }
+                }
             }
-        }
-
-        Log.d("main", "nr: " + holder.container.getChildCount());
+        });
     }
 
     @Override
@@ -176,6 +209,6 @@ public class WordsRecViewAdapter extends RecyclerView.Adapter <WordsRecViewAdapt
         boolean onEditTextsClick(View view, boolean expanded);
         void onDeleteWord(int pos);
         void onAddDetail(View itemView, int pos);
-        void onChangeWord(int pos, EditText foreignWord, EditText localWord, View view);
+        void onChangeWord(int pos, EditText foreignWord, EditText localWord, EditText type, View view);
     }
 }

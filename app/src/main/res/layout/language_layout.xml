@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="230dp"
+    android:layout_height="55dp"
+    android:orientation="horizontal"
+    android:background="@drawable/words_selector_bg"
+    android:gravity="center"
+    android:paddingBottom="4dp"
+    android:clickable="true">
+
+    <ImageView
+        android:id="@+id/foreign_flag"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@mipmap/france_flag"
+        android:layout_marginLeft="6dp"/>
+
+    <ImageView
+        android:id="@+id/local_flag"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginLeft="-10dp"
+        android:layout_marginBottom="-12dp"
+        android:src="@mipmap/america_flag" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center|left"
+        android:layout_marginLeft="20dp">
+
+        <TextView
+            android:id="@+id/number_of_words"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:text="Words: 2331"
+            android:textSize="12dp"
+            android:textColor="?attr/text_color_secondary1" />
+
+        <TextView
+            android:id="@+id/last_updated_date"
+            android:layout_width="75dp"
+            android:layout_height="wrap_content"
+            android:text="12 NOV 2021"
+            android:textSize="10dp"
+            android:textColor="?attr/text_color_secondary2" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/remove_language"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginLeft="18dp"
+        android:layout_gravity="center"
+        android:src="@drawable/delete_language"
+        android:background="@drawable/squircle_button"
+        android:backgroundTint="@color/transparent"/>
+
+
+
+
+</LinearLayout>

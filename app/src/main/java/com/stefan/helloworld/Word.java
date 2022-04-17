@@ -46,7 +46,7 @@ public class Word{
     public void setLocalWord(String localWord) {
         this.localWord = localWord;
     }
-    public HashMap<String, String> getDetails() {
+    public LinkedHashMap<String, String> getDetails() {
         return details;
     }
 }

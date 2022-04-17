@@ -54,7 +54,6 @@
                 android:textSize="17dp"
                 android:textStyle="bold"
                 android:hint="French Word"
-                android:textColorHint="#6C6C6C"
                 android:background="@null"
                 android:maxLines="1"
                 android:inputType="textNoSuggestions"
@@ -69,7 +68,6 @@
                 android:text="Car"
                 android:textColor="?attr/text_color_primary"
                 android:hint="English Word"
-                android:textColorHint="#838383"
                 android:background="@null"
                 android:maxLines="1"
                 android:inputType="textNoSuggestions"
@@ -92,14 +90,20 @@
                 android:layout_gravity="center"
                 android:id="@+id/typeImage"/>
 
-            <TextView
+            <EditText
+                android:focusableInTouchMode="false"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:text="Noun"
+                android:hint="Type"
                 android:textSize="13dp"
                 android:textColor="?attr/text_color_primary"
                 android:layout_marginLeft="4dp"
-                android:id="@+id/typeText"/>
+                android:id="@+id/typeText"
+                android:background="@null"
+                android:maxLines="1"
+                android:inputType="textNoSuggestions"
+                android:textCursorDrawable="@null"/>
         </LinearLayout>
     </LinearLayout>
 
@@ -117,6 +121,22 @@
             android:id="@+id/details"
             android:orientation="vertical"
             android:layout_marginRight="50dp">
+
+
+
+
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+            <include layout="@layout/word_details" android:visibility="gone"/>
+
+
 
 
         </LinearLayout>

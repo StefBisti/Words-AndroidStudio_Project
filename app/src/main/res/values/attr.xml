@@ -8,6 +8,7 @@
         <attr name="text_color_secondary1" format="color"/>
         <attr name="text_color_secondary2" format="color"/>
         <attr name="accent_color1" format="color"/>
+        <attr name="accent_color2" format="color"/>
 
         <attr name="mode" format="reference"/>
     </declare-styleable>

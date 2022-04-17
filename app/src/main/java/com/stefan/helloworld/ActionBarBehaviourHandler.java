@@ -4,6 +4,7 @@ import android.content.SharedPreferences;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -14,6 +15,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Locale;
 
 
@@ -85,10 +87,9 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
     }
 
 
-
     private final EditText foreignWord_addWord, localWord_addWord, keyWord_searchWord;
-    private final RelativeLayout actionBar;
-    private final LinearLayout actionBarExtension;
+    public final RelativeLayout actionBar;
+    public final LinearLayout actionBarExtension;
     private final View includeSearch, includeAdd, includeSort;
     private final InputMethodManager imm;
     private final LinearLayout[] selectedCriteriaLayout;
@@ -96,103 +97,30 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
 
     private final SharedPreferences sp;
 
-    int mode = -1;
-
+    public int mode = -1;
 
     public void ManageColorChangeForCriteria(View view, MainActivity context){
-        if(mode == 0 || mode == 2) {
-            switch (view.getId()) {
-                case R.id.addWord_noun:
-                    if (selectedCriteriaIndex[0] == 0) {
-                        selectedCriteriaIndex[0] = 1;
-                        selectedCriteriaLayout[0].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    } else {
-                        selectedCriteriaIndex[0] = 0;
-                        selectedCriteriaLayout[0].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_verb:
-                    if (selectedCriteriaIndex[1] == 0) {
-                        selectedCriteriaIndex[1] = 1;
-                        selectedCriteriaLayout[1].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    } else {
-                        selectedCriteriaIndex[1] = 0;
-                        selectedCriteriaLayout[1].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_adj:
-                    if (selectedCriteriaIndex[2] == 0) {
-                        selectedCriteriaIndex[2] = 1;
-                        selectedCriteriaLayout[2].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    } else {
-                        selectedCriteriaIndex[2] = 0;
-                        selectedCriteriaLayout[2].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_expr:
-                    if (selectedCriteriaIndex[3] == 0) {
-                        selectedCriteriaIndex[3] = 1;
-                        selectedCriteriaLayout[3].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    } else {
-                        selectedCriteriaIndex[3] = 0;
-                        selectedCriteriaLayout[3].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_other:
-                    if (selectedCriteriaIndex[4] == 0) {
-                        selectedCriteriaIndex[4] = 1;
-                        selectedCriteriaLayout[4].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    } else {
-                        selectedCriteriaIndex[4] = 0;
-                        selectedCriteriaLayout[4].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                default:
-                    break;
 
-            }
-        }
-        if(mode == 1){
-            for(int i=0; i < 5; i++){
-                if(selectedCriteriaIndex[i] == 1) {
+        HashMap<Integer, Integer> IDIntCorrespondence = ApplicationManager.getIDIntCorrespondence();
+
+        if(mode == 1) {
+            for (int i = 0; i < 5; i++) {
+                if (selectedCriteriaIndex[i] == 1) {
                     selectedCriteriaLayout[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
                     selectedCriteriaIndex[i] = 0;
                 }
             }
-            switch (view.getId()){
-                case R.id.addWord_noun:
-                    if(selectedCriteriaIndex[0] == 0) {
-                        selectedCriteriaIndex[0] = 1;
-                        selectedCriteriaLayout[0].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_verb:
-                    if(selectedCriteriaIndex[1] == 0){
-                        selectedCriteriaIndex[1] = 1;
-                        selectedCriteriaLayout[1].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_adj:
-                    if(selectedCriteriaIndex[2] == 0){
-                        selectedCriteriaIndex[2] = 1;
-                        selectedCriteriaLayout[2].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_expr:
-                    if(selectedCriteriaIndex[3] == 0){
-                        selectedCriteriaIndex[3] = 1;
-                        selectedCriteriaLayout[3].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                case R.id.addWord_other:
-                    if(selectedCriteriaIndex[4] == 0){
-                        selectedCriteriaIndex[4] = 1;
-                        selectedCriteriaLayout[4].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    }
-                    break;
-                default:
-                    break;
-
+        }
+        if(IDIntCorrespondence.keySet().contains(view.getId())){
+            if(selectedCriteriaIndex[IDIntCorrespondence.get(view.getId())] == 0){
+                selectedCriteriaIndex[IDIntCorrespondence.get(view.getId())] = 1;
+                selectedCriteriaLayout[IDIntCorrespondence.get(view.getId())].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
+            }
+            else {
+                if(mode == 0 || mode == 2){
+                    selectedCriteriaIndex[IDIntCorrespondence.get(view.getId())] = 0;
+                    selectedCriteriaLayout[IDIntCorrespondence.get(view.getId())].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
+                }
             }
         }
     }
@@ -201,56 +129,24 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
     LinearLayout[] selectedSortElements;
 
     public void ManageSortElements(View view, MainActivity context){
-        switch (view.getId()) {
-            case R.id.sort_alpha_asc:
-                if(selectedSortElementsIndex[0] == 0){
-                    selectedSortElementsIndex[0] = 1;
-                    selectedSortElements[0].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    selectedSortElementsIndex[1] = 0;
-                    selectedSortElements[1].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                else{
-                    selectedSortElementsIndex[0] = 0;
-                    selectedSortElements[0].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                break;
-            case R.id.sort_alpha_desc:
-                if(selectedSortElementsIndex[1] == 0){
-                    selectedSortElementsIndex[1] = 1;
-                    selectedSortElements[1].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    selectedSortElementsIndex[0] = 0;
-                    selectedSortElements[0].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                else{
-                    selectedSortElementsIndex[1] = 0;
-                    selectedSortElements[1].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                break;
-            case R.id.sort_date_asc:
-                if(selectedSortElementsIndex[2] == 0){
-                    selectedSortElementsIndex[2] = 1;
-                    selectedSortElements[2].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    selectedSortElementsIndex[3] = 0;
-                    selectedSortElements[3].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                else{
-                    selectedSortElementsIndex[2] = 0;
-                    selectedSortElements[2].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                break;
-            case R.id.sort_date_desc:
-                if(selectedSortElementsIndex[3] == 0) {
-                    selectedSortElementsIndex[3] = 1;
-                    selectedSortElements[3].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
-                    selectedSortElementsIndex[2] = 0;
-                    selectedSortElements[2].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-                else{
-                    selectedSortElementsIndex[3] = 0;
-                    selectedSortElements[3].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                }
-            default:
-                break;
+
+        HashMap<Integer, Integer> IDIntCorrespondenceSort = ApplicationManager.getIDIntCorrespondenceSort();
+
+        if(IDIntCorrespondenceSort.keySet().contains(view.getId())){
+            if(selectedSortElementsIndex[IDIntCorrespondenceSort.get(view.getId())] == 0) {
+                selectedSortElementsIndex[IDIntCorrespondenceSort.get(view.getId())] = 1;
+                selectedSortElements[IDIntCorrespondenceSort.get(view.getId())].setBackgroundTintList(context.getResources().getColorStateList(R.color.selectedAddWordCriteriaItem, null));
+
+                //Reset the other item in group
+                int a = IDIntCorrespondenceSort.get(view.getId()) % 2 == 0 ? 1 : -1;
+                selectedSortElementsIndex[IDIntCorrespondenceSort.get(view.getId()) + a] = 0;
+                selectedSortElements[IDIntCorrespondenceSort.get(view.getId()) + a].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
+
+            }
+            else{
+                selectedSortElementsIndex[IDIntCorrespondenceSort.get(view.getId())] = 0;
+                selectedSortElements[IDIntCorrespondenceSort.get(view.getId())].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
+            }
         }
     }
 
@@ -258,18 +154,12 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
         String foreignText = foreignWord_addWord.getText().toString();
         String localText = localWord_addWord.getText().toString();
         char type;
-        if (selectedCriteriaIndex[0] == 1)
-            type = 'N';
-        else if (selectedCriteriaIndex[1] == 1)
-            type = 'V';
-        else if (selectedCriteriaIndex[2] == 1)
-            type = 'A';
-        else if (selectedCriteriaIndex[3] == 1)
-            type = 'E';
-        else if (selectedCriteriaIndex[4] == 1)
-            type = 'O';
-        else
-            type = 'O';
+        if (selectedCriteriaIndex[0] == 1) type = 'N';
+        else if (selectedCriteriaIndex[1] == 1) type = 'V';
+        else if (selectedCriteriaIndex[2] == 1) type = 'A';
+        else if (selectedCriteriaIndex[3] == 1) type = 'E';
+        else if (selectedCriteriaIndex[4] == 1) type = 'O';
+        else type = 'O';
 
         if (foreignText.matches(""))
             Toast.makeText(context, "Provide a french word", Toast.LENGTH_SHORT).show();
@@ -283,15 +173,32 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
             MainActivity.words.add(0, new Word(todaysDate.toUpperCase(Locale.ROOT), foreignText, localText, type));
             MainActivity.adapter.setWords(MainActivity.words);
             UpdateWords(MainActivity.words);
-            MainActivity.adapter.notifyDataSetChanged();
+            MainActivity.adapter.notifyItemInserted(0);
+            MainActivity.wordsRecyclerView.smoothScrollToPosition(0);
             imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             onBackPressed(context);
+
+            String lang = sp.getString("chosenLanguage", null);
+            if(lang != null && !lang.equals("")){
+                String[] langs = lang.split("-");
+                for(Language language : LanguagesHandler.getInstance().languages){
+                    if(language.getForeignLanguage().equals(langs[0]) && language.getLocalLanguage().equals(langs[1])){
+                        SimpleDateFormat dateFormat1 = new SimpleDateFormat("dd MMM yyyy");
+                        String todaysDate1 = dateFormat1.format(date);
+                        language.setDate(todaysDate1);
+                        language.setNumberOfWords(MainActivity.words.size());
+                        LanguagesHandler.getInstance().ChangeLanguagesUI(LanguagesHandler.getInstance().languages);
+                        LanguagesHandler.getInstance().WriteLanguagesSP(LanguagesHandler.getInstance().languages);
+                    }
+                }
+            }
         }
     }
 
     public void SearchWords(View view, MainActivity context){
 
         ArrayList<Character> chars = new ArrayList<>();
+        //could use a for loop
         if(selectedCriteriaIndex[0] == 1) chars.add('N');
         if(selectedCriteriaIndex[1] == 1) chars.add('V');
         if(selectedCriteriaIndex[2] == 1) chars.add('A');
@@ -333,50 +240,29 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
     }
 
     public void onBackPressed(MainActivity context) {
-        if(mode == 1){
-            mode = -1;
-            foreignWord_addWord.clearFocus(); foreignWord_addWord.getText().clear();
-            localWord_addWord.clearFocus(); localWord_addWord.getText().clear();
-            actionBar.setVisibility(View.VISIBLE);
-            actionBarExtension.setVisibility(View.GONE);
-            for(int i=0; i < 5; i++){
-                if(selectedCriteriaIndex[i] == 1) {
-                    selectedCriteriaLayout[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    selectedCriteriaIndex[i] = 0;
-                }
-            }
-        }
-        else if(mode == 0){
-            mode = -1;
-            keyWord_searchWord.clearFocus(); keyWord_searchWord.getText().clear();
-            actionBar.setVisibility(View.VISIBLE);
-            actionBarExtension.setVisibility(View.GONE);
-            for(int i=0; i < 5; i++){
-                if(selectedCriteriaIndex[i] == 1) {
-                    selectedCriteriaLayout[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    selectedCriteriaIndex[i] = 0;
-                }
-            }
-        }
-        else if(mode == 2){
-            mode = -1;
-            actionBar.setVisibility(View.VISIBLE);
-            actionBarExtension.setVisibility(View.GONE);
-            for(int i=0; i < 5; i++){
-                if(selectedCriteriaIndex[i] == 1) {
-                    selectedCriteriaLayout[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    selectedCriteriaIndex[i] = 0;
-                }
-            }
-            for(int i=0; i<4; i++){
-                if(selectedSortElementsIndex[i] == 1){
-                    selectedSortElements[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
-                    selectedSortElementsIndex[i] = 0;
-                }
-            }
-        }
+        if(mode == -2)
+            return;
 
+        mode = -1;
+        actionBar.setVisibility(View.VISIBLE);
+        actionBarExtension.setVisibility(View.GONE);
 
+        foreignWord_addWord.clearFocus(); foreignWord_addWord.getText().clear();
+        localWord_addWord.clearFocus(); localWord_addWord.getText().clear();
+        keyWord_searchWord.clearFocus(); keyWord_searchWord.getText().clear();
+
+        for(int i=0; i < 5; i++){
+            if(selectedCriteriaIndex[i] == 1) {
+                selectedCriteriaLayout[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
+                selectedCriteriaIndex[i] = 0;
+            }
+        }
+        for(int i=0; i<4; i++){
+            if(selectedSortElementsIndex[i] == 1){
+                selectedSortElements[i].setBackgroundTintList(context.getResources().getColorStateList(R.color.unselectedAddWordCriteriaItem, null));
+                selectedSortElementsIndex[i] = 0;
+            }
+        }
     }
 
     public void showAddWord(){
@@ -411,16 +297,20 @@ public class ActionBarBehaviourHandler extends AppCompatActivity {
         actionBar.setVisibility(View.GONE);
     }
 
-    public void UpdateWords(ArrayList<Word> words){
+    public void UpdateWords(ArrayList<Word> words) {
+        String chosenLanguage = sp.getString("chosenLanguage", null);
+        if(chosenLanguage == null || chosenLanguage.equals(""))
+            return;
         SharedPreferences.Editor editor = sp.edit();
-        editor.remove("words");
-        editor.putString("words", WordsHandler.encryptWords(words));
+        editor.remove(chosenLanguage);
+        editor.putString(chosenLanguage, WordsHandler.encryptWords(words));
         editor.apply();
     }
 
     public void ResetWords(View view, MainActivity context){
         MainActivity.adapter.setWords(MainActivity.words);
         MainActivity.adapter.notifyDataSetChanged();
+        MainActivity.wordsRecyclerView.smoothScrollToPosition(0);
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
         onBackPressed(context);
     }

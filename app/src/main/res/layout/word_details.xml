@@ -20,8 +20,8 @@
         <EditText
             android:focusableInTouchMode="false"
             android:background="@null"
-            android:maxLines="1"
-            android:inputType="textNoSuggestions"
+            android:maxLines="5"
+            android:inputType="textMultiLine|textNoSuggestions"
             android:textCursorDrawable="@null"
             android:id="@+id/detail_name"
             android:layout_width="match_parent"
@@ -33,8 +33,8 @@
         <EditText
             android:focusableInTouchMode="false"
             android:background="@null"
-            android:maxLines="1"
-            android:inputType="textNoSuggestions"
+            android:maxLines="5"
+            android:inputType="textMultiLine|textNoSuggestions"
             android:textCursorDrawable="@null"
             android:id="@+id/detail_content"
             android:fontFamily="@font/fredoka_light"

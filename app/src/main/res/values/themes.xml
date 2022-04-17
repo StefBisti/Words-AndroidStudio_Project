@@ -16,6 +16,7 @@
         <item name="text_color_secondary1">#222222</item>
         <item name="text_color_secondary2">#505050</item>
         <item name="accent_color1">#6C6C6C</item>
+        <item name="accent_color2">#A8A8A8</item>
 
         <item name="mode">@drawable/dark_mode</item>
     </style>

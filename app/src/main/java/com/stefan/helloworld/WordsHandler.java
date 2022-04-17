@@ -34,7 +34,7 @@ public class WordsHandler {
 
     public static ArrayList<Word> parseWords(String allWordsString){
         ArrayList<Word> parsedWords = new ArrayList<>();
-        if(allWordsString.equals(""))
+        if(allWordsString == null || allWordsString.equals(""))
             return parsedWords;
 
         String[] wordsStringList = allWordsString.split("#");
@@ -73,7 +73,6 @@ public class WordsHandler {
     public static ArrayList<Word> sortedWords(ArrayList<Word> words, int alpha, int date, ArrayList<Character> chars){
         ArrayList<Word> newWords;
         newWords = searchedWords(words,"", chars);
-
 
         Comparator<Word> comparatorAlpha = new Comparator<Word>() {
             @Override

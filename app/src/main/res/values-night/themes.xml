@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.HelloWorld" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="android:fontFamily">@font/fredoka_reg</item>
-        <item name="android:statusBarColor">#2E2E2E</item>
+        <item name="android:statusBarColor">#303030</item>
         <item name="android:windowLightStatusBar">false</item>
         <item name="android:overScrollMode">never</item>
         <item name="android:ambientShadowAlpha">1</item>
@@ -15,6 +15,7 @@
         <item name="text_color_secondary1">#E3E3E3</item>
         <item name="text_color_secondary2">#CDCDCD</item>
         <item name="accent_color1">#989898</item>
+        <item name="accent_color2">#616161</item>
 
         <item name="mode">@drawable/light_mode</item>
     </style>

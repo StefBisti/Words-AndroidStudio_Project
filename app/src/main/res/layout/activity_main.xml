@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:background="?attr/background_color"
-    android:id="@+id/totalContainer">
+    android:id="@+id/totalContainer"
+    android:animateLayoutChanges="true">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -16,16 +17,18 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_gravity="left"
+            android:layout_gravity="start"
             android:layout_marginLeft="30dp">
 
             <ImageView
+                android:id="@+id/foreign_flag_upper"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:src="@mipmap/france_flag"
                 android:layout_gravity="center" />
 
             <ImageView
+                android:id="@+id/local_flag_upper"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_marginLeft="-7dp"
@@ -34,15 +37,20 @@
                 android:layout_gravity="bottom"/>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <ImageButton
+            android:id="@+id/show_languages_tab"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:src="@drawable/menu"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="30dp" />
+            android:layout_marginRight="30dp"
+            android:backgroundTint="?attr/background_color"
+            android:background="@drawable/squircle_button"/>
 
     </RelativeLayout>
+
+
 
     <View
         android:layout_width="match_parent"
@@ -52,198 +60,367 @@
         android:layout_marginHorizontal="15dp"/>
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent"
+        android:animateLayoutChanges="true"
+        android:id="@+id/languages_holder_with_add"
+        android:padding="7dp"
         android:orientation="vertical"
-        android:layout_below="@+id/topBar">
-
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/wordsRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-
-
-        android:layout_marginHorizontal="10dp"
-        android:layout_marginTop="7dp"
-        android:layout_marginBottom="5dp"
-        android:clipToPadding="false"
-        android:layoutAnimation="@anim/layout_animation"
-        android:paddingTop="10dp" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_width="244dp"
         android:layout_height="wrap_content"
-        android:elevation="60dp"
-        android:outlineAmbientShadowColor="#D5000000"
-        android:backgroundTint="#2C2E30"
-        android:background="@drawable/bottom_bar_bg"
-        android:layout_alignParentBottom="true"
-        android:orientation="vertical"
-        android:animateLayoutChanges="true">
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="12dp"
+        android:translationZ="20dp"
+        android:outlineSpotShadowColor="#43000000"
+        android:outlineAmbientShadowColor="#0F000000"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/layout_bg"
+        android:clickable="true"
+        android:backgroundTint="?attr/container_color_selected"
+        android:visibility="gone">
 
         <LinearLayout
-            android:orientation="horizontal"
+            android:id="@+id/languages_holder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+            <include layout="@layout/language_layout"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:orientation="horizontal"
+            android:gravity="right|center"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="4dp">
+            <ImageButton
+                android:id="@+id/close_languages_tab"
+                android:layout_width="35dp"
+                android:clickable="true"
+                android:layout_marginRight="20dp"
+                android:layout_height="35dp"
+                android:src="@drawable/close"
+                app:tint="#B80000"
+                android:backgroundTint="?attr/container_color_selected"
+                android:background="@drawable/squircle_button"/>
+            <ImageButton
+                android:id="@+id/add_language"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:clickable="true"
+                android:src="@drawable/add_detail"
+                android:layout_marginRight="8dp"
+                android:backgroundTint="?attr/container_color_selected"
+                android:background="@drawable/squircle_button"/>
+        </LinearLayout>
 
-
-
-
-            android:visibility="gone"
-            android:id="@+id/action_bar"
-            android:paddingVertical="20dp">
-
-            <include
-                android:id="@+id/actionBar_include_search"
-                layout="@layout/action_bar_searchword"
-                android:visibility="gone"/>
-            <include
-                android:id="@+id/actionBar_include_add"
-                layout="@layout/action_bar_addword"
-                android:visibility="gone"/>
-            <include
-                android:id="@+id/actionBar_include_sort"
-                layout="@layout/action_bar_sortwords"
-                android:visibility="gone"/>
-
-
-
-            <View
-                android:layout_width="1dp"
-                android:layout_height="match_parent"
-                android:background="#979797"/>
+        <LinearLayout
+            android:id="@+id/add_language_tab"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="gone">
 
             <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_weight="1"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <ImageView
+                            android:id="@+id/forgn_language_english"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/america_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_romanian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/romania_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_french"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/france_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_spanish"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/spain_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_german"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/germany_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_italian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/italy_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_russian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/russian_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_greek"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/greece_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_japanese"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/japan_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_norwegian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/norway_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/forgn_language_georgian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/georgia_flag"
+                            android:background="@drawable/words_selector_bg"/>
+
+                    </LinearLayout>
+                </ScrollView>
+
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="?attr/accent_color2"
+                    android:layout_marginHorizontal="9dp"/>
+
+                <ScrollView
+                    android:layout_width="0dp"
+                    android:layout_height="250dp"
+                    android:layout_weight="1"
+                    android:scrollbars="none">
+                    <LinearLayout
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp">
+                        <ImageView
+                            android:id="@+id/local_language_english"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/america_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_romanian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/romania_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_french"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/france_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_spanish"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/spain_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_german"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/germany_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_italian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/italy_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_russian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/russian_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_greek"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/greece_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_japanese"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/japan_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_norwegian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/norway_flag"
+                            android:background="@drawable/words_selector_bg"/>
+                        <ImageView
+                            android:id="@+id/local_language_georgian"
+                            android:clickable="true"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:paddingVertical="4dp"
+                            android:layout_marginHorizontal="2dp"
+                            android:layout_gravity="center"
+                            android:src="@mipmap/georgia_flag"
+                            android:background="@drawable/words_selector_bg"/>
+
+                    </LinearLayout>
+                </ScrollView>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/submit_language"
+                android:clickable="true"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+                android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:layout_marginHorizontal="20dp">
+                android:background="@drawable/words_selector_bg"
+                android:paddingVertical="9dp"
+                android:clipToPadding="false"
+                android:gravity="center"
+                android:paddingHorizontal="20dp">
 
-                <LinearLayout
-                    android:animateLayoutChanges="true"
-                    android:id="@+id/addWord_noun"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/done_button"
-                    android:backgroundTint="#25FFFFFF"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginVertical="2dp">
+                <ImageView
+                    android:id="@+id/foreign_flag_selector"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@mipmap/empty_flag" />
 
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:src="@drawable/circle_noun"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Noun"
-                        android:textSize="13dp"
-                        android:textColor="#F3F3F3"
-                        android:layout_marginLeft="4dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/addWord_verb"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/done_button"
-                    android:backgroundTint="#25FFFFFF"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginVertical="2dp">
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:src="@drawable/circle_verb"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Verb"
-                        android:textSize="13dp"
-                        android:textColor="#F3F3F3"
-                        android:layout_marginLeft="4dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/addWord_adj"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/done_button"
-                    android:backgroundTint="#25FFFFFF"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginVertical="2dp">
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:src="@drawable/circle_adj"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Adj."
-                        android:textSize="13dp"
-                        android:textColor="#F3F3F3"
-                        android:layout_marginLeft="4dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/addWord_expr"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/done_button"
-                    android:backgroundTint="#25FFFFFF"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginVertical="2dp">
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:src="@drawable/circle_expr"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Expr."
-                        android:textSize="13dp"
-                        android:textColor="#F3F3F3"
-                        android:layout_marginLeft="4dp"/>
-                </LinearLayout>
-                <LinearLayout
-                    android:id="@+id/addWord_other"
-                    android:layout_width="80dp"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/done_button"
-                    android:backgroundTint="#25FFFFFF"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="5dp"
-                    android:layout_marginVertical="2dp">
-
-                    <ImageView
-                        android:layout_width="10dp"
-                        android:layout_height="10dp"
-                        android:src="@drawable/circle_other"
-                        android:layout_gravity="center"/>
-
-                    <TextView
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Other"
-                        android:textSize="13dp"
-                        android:textColor="#F3F3F3"
-                        android:layout_marginLeft="4dp"/>
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/local_flag_selector"
+                    android:layout_width="37dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginLeft="-12dp"
+                    android:layout_height="37dp"
+                    android:src="@mipmap/empty_flag" />
 
 
             </LinearLayout>
@@ -251,47 +428,260 @@
 
         </LinearLayout>
 
-        <RelativeLayout
-            android:id="@+id/addWordPanelHotBar"
+    </LinearLayout>
+
+
+
+    <TextView
+        android:id="@+id/no_words_text"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No words available\nTap the Add button to create a word."
+        android:layout_centerInParent="true"
+        android:gravity="center"
+        android:translationY="-50dp"
+        android:lineHeight="50dp"
+        android:textSize="18dp"
+        android:textColor="?attr/text_color_secondary2"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/topBar">
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/wordsRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginTop="7dp"
+            android:layout_marginBottom="5dp"
+            android:clipToPadding="false"
+            android:paddingTop="10dp" />
+            <!--android:layoutAnimation="@anim/layout_animation"-->
+
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="14dp"
-            android:background="@drawable/bottom_bar_bg"
-            android:backgroundTint="#232527">
+            android:elevation="60dp"
+            android:outlineAmbientShadowColor="#D5000000"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical"
+            android:animateLayoutChanges="true">
 
-            <ImageButton
-                android:id="@+id/searchWords"
-                android:background="@drawable/circle_button_secondary"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/search"
-                android:layout_alignParentLeft="true"/>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:visibility="gone"
+                android:backgroundTint="#232527"
+                android:background="@drawable/bottom_bar_bg"
+                android:id="@+id/action_bar"
+                android:paddingVertical="20dp">
 
-            <ImageButton
-                android:id="@+id/addWord"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_centerInParent="true"
-                android:background="@drawable/circle_button"
-                android:backgroundTint="#B10000"
-                android:src="@drawable/plus"/>
+                <include
+                    android:id="@+id/actionBar_include_search"
+                    layout="@layout/action_bar_searchword"
+                    android:visibility="gone"/>
+                <include
+                    android:id="@+id/actionBar_include_add"
+                    layout="@layout/action_bar_addword"
+                    android:visibility="gone"/>
+                <include
+                    android:id="@+id/actionBar_include_sort"
+                    layout="@layout/action_bar_sortwords"
+                    android:visibility="gone"/>
 
-            <ImageButton
-                android:id="@+id/sortWords"
-                android:background="@drawable/circle_button_secondary"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginRight="30dp"
-                android:layout_centerVertical="true"
-                android:src="@drawable/sort"
-                android:layout_alignParentRight="true">
-            </ImageButton>
 
-        </RelativeLayout>
 
-    </LinearLayout>
+                <View
+                    android:layout_width="1dp"
+                    android:layout_height="match_parent"
+                    android:background="#979797"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_gravity="center"
+                    android:layout_marginHorizontal="20dp">
+
+                    <LinearLayout
+                        android:animateLayoutChanges="true"
+                        android:id="@+id/addWord_noun"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/done_button"
+                        android:backgroundTint="#25FFFFFF"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="5dp"
+                        android:layout_marginVertical="2dp">
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/circle_noun"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Noun"
+                            android:textSize="13dp"
+                            android:textColor="#F3F3F3"
+                            android:layout_marginLeft="4dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/addWord_verb"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/done_button"
+                        android:backgroundTint="#25FFFFFF"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="5dp"
+                        android:layout_marginVertical="2dp">
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/circle_verb"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Verb"
+                            android:textSize="13dp"
+                            android:textColor="#F3F3F3"
+                            android:layout_marginLeft="4dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/addWord_adj"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/done_button"
+                        android:backgroundTint="#25FFFFFF"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="5dp"
+                        android:layout_marginVertical="2dp">
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/circle_adj"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Adj."
+                            android:textSize="13dp"
+                            android:textColor="#F3F3F3"
+                            android:layout_marginLeft="4dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/addWord_expr"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/done_button"
+                        android:backgroundTint="#25FFFFFF"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="5dp"
+                        android:layout_marginVertical="2dp">
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/circle_expr"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Expr."
+                            android:textSize="13dp"
+                            android:textColor="#F3F3F3"
+                            android:layout_marginLeft="4dp"/>
+                    </LinearLayout>
+                    <LinearLayout
+                        android:id="@+id/addWord_other"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/done_button"
+                        android:backgroundTint="#25FFFFFF"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="5dp"
+                        android:layout_marginVertical="2dp">
+
+                        <ImageView
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:src="@drawable/circle_other"
+                            android:layout_gravity="center"/>
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Other"
+                            android:textSize="13dp"
+                            android:textColor="#F3F3F3"
+                            android:layout_marginLeft="4dp"/>
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:id="@+id/addWordPanelHotBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingVertical="14dp"
+                android:background="@drawable/bottom_bar_bg"
+                android:backgroundTint="#232527">
+
+                <ImageButton
+                    android:id="@+id/searchWords"
+                    android:background="@drawable/circle_button_secondary"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/search"
+                    android:layout_alignParentLeft="true"/>
+
+                <ImageButton
+                    android:id="@+id/addWord"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/circle_button"
+                    android:backgroundTint="#B10000"
+                    android:src="@drawable/plus"/>
+
+                <ImageButton
+                    android:id="@+id/sortWords"
+                    android:background="@drawable/circle_button_secondary"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/sort"
+                    android:layout_alignParentRight="true">
+                </ImageButton>
+
+            </RelativeLayout>
+
+        </LinearLayout>
 
     </LinearLayout>
 
